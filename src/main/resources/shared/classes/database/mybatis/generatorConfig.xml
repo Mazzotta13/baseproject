@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+
+<generatorConfiguration>
+    <!--    <classPathEntry location="/Program Files/IBM/SQLLIB/java/db2java.zip" />-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- DB Connection data -->
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://localhost:5432/postgres"
+                        userId="postgres"
+                        password="mysecretpassword">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- Where to store DB Models-->
+        <javaModelGenerator targetPackage="com.alessio.baseproject.database.rawmodel" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- Where to store XML mappers-->
+        <sqlMapGenerator targetPackage="com.alessio.baseproject.database.sql.dao.mapper" targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- Where to store Java Mappers-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.alessio.baseproject.database.sql.dao.mapper"
+                             targetProject="MAVEN">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="card" domainObjectName="CardEntity"/>
+        <table tableName="user" domainObjectName="UserEntity">
+            <columnOverride column="creation_date" jdbcType="TIMESTAMP_WITH_TIMEZONE" javaType="org.joda.time.DateTime" typeHandler="com.alessio.baseproject.database.sql.dao.mapper.handler.JsonDateTimeWithMillisTypeHandler"/>
+        </table>
+    </context>
+</generatorConfiguration>
