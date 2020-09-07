@@ -92,6 +92,13 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 
+		<!-- Mapstrucct -->
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
 
 
 	</dependencies>
@@ -122,6 +129,28 @@
 						<version>${postgres.version}</version>
 					</dependency>
 				</dependencies>
+			</plugin>
+			<!-- Maven Mupstruct Compiler plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+					</annotationProcessorPaths>
+					<!--                    <compilerArgs>-->
+					<!--                        <compilerArg>-->
+					<!--                            -Amapstruct.unmappedTargetPolicy=ERROR-->
+					<!--                        </compilerArg>-->
+					<!--                    </compilerArgs>-->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
