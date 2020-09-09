@@ -57,7 +57,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
-			<version>2.3.3.RELEASE</version>
 		</dependency>
 
 		<dependency>
@@ -81,11 +80,6 @@
 			<artifactId>joda-time</artifactId>
 			<version>2.10</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>5.2.7.RELEASE</version>
-		</dependency>
 
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -99,6 +93,19 @@
 			<version>${org.mapstruct.version}</version>
 		</dependency>
 
+		<!-- Swagger -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.9.2</version>
+		</dependency>
+
+
 
 
 	</dependencies>
@@ -108,6 +115,34 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<!-- Maven Resources plugin -->
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>
+								${basedir}/target/classes/com/alessio/baseproject/database/sql/dao/mapper
+							</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/java/com/alessio/baseproject/database/sql/dao/mapper</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>**/*Mapper.xml</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 			<!-- My batis generator plugin -->
 			<plugin>
@@ -145,11 +180,11 @@
 							<version>${org.mapstruct.version}</version>
 						</path>
 					</annotationProcessorPaths>
-					<!--                    <compilerArgs>-->
-					<!--                        <compilerArg>-->
-					<!--                            -Amapstruct.unmappedTargetPolicy=ERROR-->
-					<!--                        </compilerArg>-->
-					<!--                    </compilerArgs>-->
+					<compilerArgs>
+						<compilerArg>
+							-Amapstruct.unmappedTargetPolicy=ERROR
+						</compilerArg>
+					</compilerArgs>
 				</configuration>
 			</plugin>
 		</plugins>

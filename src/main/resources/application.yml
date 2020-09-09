@@ -3,3 +3,7 @@ jdbc:
   url: jdbc:postgresql://localhost:5432/postgres
   username: postgres
   password: mysecretpassword
+
+server:
+  servlet:
+    context-path: /base-app

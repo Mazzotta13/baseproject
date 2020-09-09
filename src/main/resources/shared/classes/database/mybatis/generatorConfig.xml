@@ -49,7 +49,7 @@ and open the template in the editor.
         </javaClientGenerator>
 
         <table tableName="card" domainObjectName="CardEntity"/>
-        <table tableName="user" domainObjectName="UserEntity">
+        <table tableName="utenti" domainObjectName="UserEntity">
             <columnOverride column="creation_date" jdbcType="TIMESTAMP_WITH_TIMEZONE" javaType="org.joda.time.DateTime" typeHandler="com.alessio.baseproject.database.sql.dao.mapper.handler.JsonDateTimeWithMillisTypeHandler"/>
         </table>
     </context>

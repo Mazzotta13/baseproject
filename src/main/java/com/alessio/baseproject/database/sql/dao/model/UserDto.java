@@ -1,18 +1,27 @@
 package com.alessio.baseproject.database.sql.dao.model;
 
-import org.joda.time.DateTime;
+import java.time.LocalDateTime;
 
 public class UserDto {
-    private String id;
+    private String utentiId;
     private String name;
-    private DateTime creationDate;
+    private LocalDateTime creationDate;
 
-    public String getId() {
-        return id;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public UserDto setId(String id) {
-        this.id = id;
+    public UserDto setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+        return this;
+    }
+
+    public String getUtentiId() {
+        return utentiId;
+    }
+
+    public UserDto setUtentiId(String utentiId) {
+        this.utentiId = utentiId;
         return this;
     }
 
@@ -25,19 +34,11 @@ public class UserDto {
         return this;
     }
 
-    public DateTime getCreationDate() {
-        return creationDate;
-    }
-
-    public UserDto setCreationDate(DateTime creationDate) {
-        this.creationDate = creationDate;
-        return this;
-    }
 
     @Override
     public String toString() {
         return "UserDto{" +
-                "id='" + id + '\'' +
+                "utentiId='" + utentiId + '\'' +
                 ", name='" + name + '\'' +
                 ", creationDate=" + creationDate +
                 '}';

@@ -11,3 +11,5 @@ READMI:
     - username: postgres
     - password: mysecretpassword
    
+MAVEN COPY RESOURCE:
+- da terminale: mvn process-resources
