@@ -1,17 +1,23 @@
 package com.alessio.baseproject.database.sql.dao.model;
 
-import java.time.LocalDateTime;
+import com.alessio.baseproject.serializer.DateTimeJsonDeserializer;
+import com.alessio.baseproject.serializer.DateTimeJsonSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import org.joda.time.DateTime;
 
 public class UserDto {
     private String utentiId;
     private String name;
-    private LocalDateTime creationDate;
+    @JsonSerialize(using = DateTimeJsonSerializer.class)
+    @JsonDeserialize(using = DateTimeJsonDeserializer.class)
+    private DateTime creationDate;
 
-    public LocalDateTime getCreationDate() {
+    public DateTime getCreationDate() {
         return creationDate;
     }
 
-    public UserDto setCreationDate(LocalDateTime creationDate) {
+    public UserDto setCreationDate(DateTime creationDate) {
         this.creationDate = creationDate;
         return this;
     }
