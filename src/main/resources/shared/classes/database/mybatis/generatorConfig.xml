@@ -51,6 +51,7 @@ and open the template in the editor.
         <table tableName="card" domainObjectName="CardEntity"/>
         <table tableName="utenti" domainObjectName="UserEntity">
             <columnOverride column="creation_date" jdbcType="TIMESTAMP_WITH_TIMEZONE" javaType="org.joda.time.DateTime" typeHandler="com.alessio.baseproject.database.sql.dao.mapper.handler.JsonDateTimeWithMillisTypeHandler"/>
+            <columnOverride column="additional_info" jdbcType="OTHER" javaType="java.util.HashMap" typeHandler="com.alessio.baseproject.database.sql.dao.mapper.handler.JsonHashMapTypeHandler"/>
         </table>
     </context>
 </generatorConfiguration>

@@ -13,6 +13,17 @@ public class UserDto {
     @JsonDeserialize(using = DateTimeJsonDeserializer.class)
     private DateTime creationDate;
 
+    private BatchAdditionalInfo additionalInfo;
+
+    public BatchAdditionalInfo getAdditionalInfo() {
+        return additionalInfo;
+    }
+
+    public UserDto setAdditionalInfo(BatchAdditionalInfo additionalInfo) {
+        this.additionalInfo = additionalInfo;
+        return this;
+    }
+
     public DateTime getCreationDate() {
         return creationDate;
     }
@@ -40,13 +51,13 @@ public class UserDto {
         return this;
     }
 
-
     @Override
     public String toString() {
         return "UserDto{" +
                 "utentiId='" + utentiId + '\'' +
                 ", name='" + name + '\'' +
                 ", creationDate=" + creationDate +
+                ", additionalInfo=" + additionalInfo +
                 '}';
     }
 }

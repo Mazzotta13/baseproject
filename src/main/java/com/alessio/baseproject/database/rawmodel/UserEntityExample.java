@@ -3,6 +3,7 @@ package com.alessio.baseproject.database.rawmodel;
 import org.joda.time.DateTime;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class UserEntityExample {
@@ -158,6 +159,8 @@ public class UserEntityExample {
     protected abstract static class GeneratedCriteria {
         protected List<Criterion> creationDateCriteria;
 
+        protected List<Criterion> additionalInfoCriteria;
+
         protected List<Criterion> allCriteria;
 
         protected List<Criterion> criteria;
@@ -166,6 +169,7 @@ public class UserEntityExample {
             super();
             criteria = new ArrayList<Criterion>();
             creationDateCriteria = new ArrayList<Criterion>();
+            additionalInfoCriteria = new ArrayList<Criterion>();
         }
 
         public List<Criterion> getCreationDateCriteria() {
@@ -188,9 +192,30 @@ public class UserEntityExample {
             allCriteria = null;
         }
 
+        public List<Criterion> getAdditionalInfoCriteria() {
+            return additionalInfoCriteria;
+        }
+
+        protected void addAdditionalInfoCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            additionalInfoCriteria.add(new Criterion(condition, value, "com.alessio.baseproject.database.sql.dao.mapper.handler.JsonHashMapTypeHandler"));
+            allCriteria = null;
+        }
+
+        protected void addAdditionalInfoCriterion(String condition, HashMap value1, HashMap value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            additionalInfoCriteria.add(new Criterion(condition, value1, value2, "com.alessio.baseproject.database.sql.dao.mapper.handler.JsonHashMapTypeHandler"));
+            allCriteria = null;
+        }
+
         public boolean isValid() {
             return criteria.size() > 0
-                || creationDateCriteria.size() > 0;
+                || creationDateCriteria.size() > 0
+                || additionalInfoCriteria.size() > 0;
         }
 
         public List<Criterion> getAllCriteria() {
@@ -198,6 +223,7 @@ public class UserEntityExample {
                 allCriteria = new ArrayList<Criterion>();
                 allCriteria.addAll(criteria);
                 allCriteria.addAll(creationDateCriteria);
+                allCriteria.addAll(additionalInfoCriteria);
             }
             return allCriteria;
         }
@@ -427,6 +453,66 @@ public class UserEntityExample {
 
         public Criteria andNameNotBetween(String value1, String value2) {
             addCriterion("name not between", value1, value2, "name");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoIsNull() {
+            addCriterion("additional_info is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoIsNotNull() {
+            addCriterion("additional_info is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoEqualTo(HashMap value) {
+            addAdditionalInfoCriterion("additional_info =", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoNotEqualTo(HashMap value) {
+            addAdditionalInfoCriterion("additional_info <>", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoGreaterThan(HashMap value) {
+            addAdditionalInfoCriterion("additional_info >", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoGreaterThanOrEqualTo(HashMap value) {
+            addAdditionalInfoCriterion("additional_info >=", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoLessThan(HashMap value) {
+            addAdditionalInfoCriterion("additional_info <", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoLessThanOrEqualTo(HashMap value) {
+            addAdditionalInfoCriterion("additional_info <=", value, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoIn(List<HashMap> values) {
+            addAdditionalInfoCriterion("additional_info in", values, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoNotIn(List<HashMap> values) {
+            addAdditionalInfoCriterion("additional_info not in", values, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoBetween(HashMap value1, HashMap value2) {
+            addAdditionalInfoCriterion("additional_info between", value1, value2, "additionalInfo");
+            return (Criteria) this;
+        }
+
+        public Criteria andAdditionalInfoNotBetween(HashMap value1, HashMap value2) {
+            addAdditionalInfoCriterion("additional_info not between", value1, value2, "additionalInfo");
             return (Criteria) this;
         }
 

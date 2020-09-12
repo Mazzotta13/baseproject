@@ -1,6 +1,5 @@
 package com.alessio.baseproject.database.sql.dao.impl;
 
-import com.alessio.baseproject.database.rawmodel.UserEntity;
 import com.alessio.baseproject.database.rawmodel.UserEntityExample;
 import com.alessio.baseproject.database.sql.dao.UserDao;
 import com.alessio.baseproject.database.sql.dao.converter.UserDaoConverter;
@@ -34,22 +33,20 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public UserDto insert(UserDto record) {
-//        record = record.setId(UUID.randomUUID().toString().replace("-",""));
-//        if (record.getCreationDate() == null) {
-//            record.setCreationDate(DateTime.now());
-//        }
-//        userEntityMapper
-//                .insert(UserDaoConverter.INSTANCE.map(record));
+        record = record.setUtentiId(UUID.randomUUID().toString().replace("-",""));
+        record.setCreationDate(DateTime.now());
+        userEntityMapper
+                .insert(UserDaoConverter.INSTANCE.map(record));
 //        CardEntity cardEtity = new CardEntity();
 //        cardEtity.setId(UUID.randomUUID().toString().replace("-",""));
 //        cardEtity.setName("name");
 //        cardEntityMapper.insert(cardEtity);
 
-        UserEntity userEntity= new UserEntity();
-        userEntity.setUtentiId(UUID.randomUUID().toString().replace("-",""));
-        userEntity.setName("testName");
-        userEntity.setCreationDate(DateTime.now());
-        userEntityMapper.insert(userEntity);
+//        UserEntity userEntity= new UserEntity();
+//        userEntity.setUtentiId(UUID.randomUUID().toString().replace("-",""));
+//        userEntity.setName("testName");
+//        userEntity.setCreationDate(DateTime.now());
+//        userEntityMapper.insert(userEntity);
         return  record;
     }
 

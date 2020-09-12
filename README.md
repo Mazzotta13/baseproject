@@ -14,4 +14,11 @@ Base Project
     
 3) Per vedere Swagger: 
 
-http://localhost:8080/base-app/swagger-ui.html
+    - http://localhost:8080/base-app/swagger-ui.html
+
+4) DateTime da swagger scrivere:
+
+    - 2020-09-09 21:23:35.802Z
+    
+5) Per copiare risorse potrebbe essere necessario usare (da terminale):
+    - mvn process-resources
