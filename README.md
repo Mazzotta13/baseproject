@@ -20,5 +20,5 @@ Base Project
 
     - 2020-09-09 21:23:35.802Z
     
-5) Per copiare risorse potrebbe essere necessario usare (da terminale):
+5) Per copiare risorse in target è necessario usare (da terminale):
     - mvn process-resources

@@ -40,7 +40,7 @@ public interface UserDaoConverter {
             ObjectMapper mapper = new ObjectMapper();
             HashMap additionalInfo = mapper.convertValue(dto.getAdditionalInfo(), HashMap.class);
             result.setAdditionalInfo(additionalInfo);
-            System.out.println(result.toString());
+            System.out.println(result);
         }
     }
 }
